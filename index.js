@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
+const PropretyRoute = require("./routes/propreties");
+
 const app = express();
 
 mongoose
@@ -14,6 +16,7 @@ mongoose
 
 app.use(bodyParser.json());
 
+app.use("/api/proprety", PropretyRoute);
 app.use("/api", (req, res, next) => {
 	res.send({
 		message:

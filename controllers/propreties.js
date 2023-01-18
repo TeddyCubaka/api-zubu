@@ -30,7 +30,7 @@ exports.getThreeToper = (req, res) => {
 };
 
 exports.updateProprety = (req, res) => {
-	Proprety.updateOne({ _id: req.body.discussionId }, { ...req.body })
+	Proprety.updateOne({ _id: req.params.id }, { ...req.body })
 		.then((data) => res.send(data))
 		.catch((err) => res.send(err));
 };
