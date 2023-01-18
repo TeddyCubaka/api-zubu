@@ -113,11 +113,11 @@ const propretySchema = mongoose.Schema({
 	],
 	statistics: {
 		referencing_note: Number,
-		average_views_per_week: String,
-		average_grade: String,
-		average_views_per_month: String,
-		person_who_noted: String,
-		average_visits_per_week: String,
+		average_views_per_week: Number,
+		average_grade: Number,
+		average_views_per_month: Number,
+		person_who_noted: Number,
+		average_visits_per_week: Number,
 		views_per_week: [
 			{
 				start_time: Date,

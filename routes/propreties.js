@@ -20,3 +20,5 @@ router.post("/", propretiesCtrl.addProprety);
 router.get("/", propretiesCtrl.getAllPropreties);
 router.get("/three_On_top", propretiesCtrl.getThreeToper);
 router.post("/:id", propretiesCtrl.updateProprety);
+
+module.exports = router;

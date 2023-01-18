@@ -25,5 +25,5 @@ app.use("/api", (req, res, next) => {
 });
 
 app.listen("4000", () => {
-	console.log("listen on the port 4000");
+	console.log("listen on http://localhost:4000");
 });
