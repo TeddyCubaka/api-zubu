@@ -35,3 +35,9 @@ exports.updateProprety = (req, res) => {
 		.then((data) => res.send(data))
 		.catch((err) => res.send(err));
 };
+
+exports.chakeAdress = (req, res) => {
+	Proprety.find({ "rental_information.adress": req.params.adress })
+		.then((data) => res.send(data.length))
+		.catch((err) => res.send(err));
+};

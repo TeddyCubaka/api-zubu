@@ -18,6 +18,10 @@ const propretySchema = mongoose.Schema({
 		cover_picture: String,
 		address: { type: String, required: true, unique: true },
 		area: String,
+		lessor: {
+			fullName: String,
+			contacts: Number,
+		},
 	},
 	description: {
 		gallery: [
