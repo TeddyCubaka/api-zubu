@@ -12,7 +12,7 @@ const propretySchema = mongoose.Schema({
 		availability_date: Date,
 		type_of_rental: String,
 		geolocalisation: { type: String, unique: true },
-		price: { type: Number, required: true },
+		price: { type: String, required: true },
 		guarantee_value: { type: String, required: true },
 		monetary_currency: String,
 		cover_picture: String,
