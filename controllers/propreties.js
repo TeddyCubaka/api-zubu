@@ -2,10 +2,13 @@ const Proprety = require("../models/propreties");
 
 exports.addProprety = (req, res) => {
 	const proprety = new Proprety({ ...req.body });
+	proprety.upload_date = Date();
+	proprety.is_available = false;
+	console.log(proprety);
 	proprety
 		.save()
-		.then((data) => res.send({ message: "Propreties added", data }))
-		.catch((err) => res.send(err));
+		.then((data) => res.status(201).json({ message: "Propreties added", data }))
+		.catch((err) => res.status(401).json({ message: "echec ", err }));
 };
 
 exports.getPropreties = (req, res) => {
