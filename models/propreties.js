@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const propretySchema = mongoose.Schema({
-	_id: String,
 	owner: String,
 	upload_date: Date,
 	update_date: [Date],
@@ -20,7 +19,7 @@ const propretySchema = mongoose.Schema({
 		area: String,
 		lessor: {
 			fullName: String,
-			contacts: Number,
+			contacts: String,
 		},
 	},
 	description: {
