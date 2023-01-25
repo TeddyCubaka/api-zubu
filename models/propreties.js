@@ -8,7 +8,7 @@ const propretySchema = mongoose.Schema({
 	visits: [mongoose.Types.ObjectId],
 	rental_information: {
 		is_available: Boolean,
-		availability_date: Date,
+		availability_date: String,
 		type_of_rental: String,
 		geolocalisation: { type: String, unique: true },
 		price: { type: String, required: true },

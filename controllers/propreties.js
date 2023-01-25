@@ -4,7 +4,6 @@ exports.addProprety = (req, res) => {
 	const proprety = new Proprety({ ...req.body });
 	proprety.upload_date = Date();
 	proprety.is_available = false;
-	console.log(proprety);
 	proprety
 		.save()
 		.then((data) => res.status(201).json({ message: "Propreties added", data }))
@@ -35,7 +34,9 @@ exports.getThreeToper = (req, res) => {
 
 exports.updateProprety = (req, res) => {
 	Proprety.updateOne({ _id: req.params.id }, { ...req.body })
-		.then((data) => res.send(data))
+		.then((data) => {
+			res.send(data)
+		})
 		.catch((err) => res.send(err));
 };
 
@@ -43,4 +44,10 @@ exports.chakeAdress = (req, res) => {
 	Proprety.find({ "rental_information.adress": req.params.adress })
 		.then((data) => res.send(data.length))
 		.catch((err) => res.send(err));
+};
+
+exports.getOneProprety = (req, res) => {
+	Proprety.findOne({ _id: req.params.id })
+		.then((data) => res.send(data))
+		.catch((err) => res.status(404).json(err));
 };
