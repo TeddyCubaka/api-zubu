@@ -42,7 +42,7 @@ const propretySchema = mongoose.Schema({
 			rooms: [
 				{
 					name: String,
-					details: String,
+					size: Number,
 					unit: String,
 				},
 			],
@@ -51,7 +51,7 @@ const propretySchema = mongoose.Schema({
 			rooms: [
 				{
 					name: String,
-					details: String,
+					size: Number,
 					unit: String,
 				},
 			],
