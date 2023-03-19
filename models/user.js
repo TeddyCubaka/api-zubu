@@ -1,30 +1,30 @@
 const mongoose = require("mongoose");
+const propreties = require("./propreties");
+const uniqueValidator = require("mongoose-unique-validator");
 
 const UserSchema = mongoose.Schema({
-	users: {
-		_id: " ",
-		mail: " ",
-		phone_number: "number",
-		password: " ",
-		username: " ",
-		gender: " ",
-		profile_picture_url: " ",
-		created_at: "date",
-		proprety: ["id"],
-		pending_visit: ["_id"],
-		sending_visit: ["_id"],
-		proprety_saved: ["_id"],
-		notifications: [
-			{
-				_id: "",
-				type: "",
-				url: "",
-				writting_date: "date",
-				object: " ",
-				content: " ",
-			},
-		],
-	},
+	mail: { type: String, require: true, unique: true },
+	phone_number: { type: String, unique: true },
+	password: { type: String, require: true },
+	username: { type: String, require: true },
+	gender: String,
+	profile_picture_url: String,
+	created_at: Date,
+	proprety: [String],
+	pending_visit: [String],
+	sending_visit: [String],
+	proprety_saved: [String],
+	notifications: [
+		{
+			type: String,
+			url: String,
+			writting_date: Date,
+			object: String,
+			content: String,
+		},
+	],
 });
 
-exports = mongoose.model("Users", UserSchema);
+UserSchema.plugin(uniqueValidator);
+
+module.exports = mongoose.model("Users", UserSchema);
