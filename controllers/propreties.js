@@ -24,7 +24,7 @@ exports.getAllPropreties = (req, res) => {
 
 exports.getThreeToper = (req, res) => {
 	Proprety.find({})
-		.select({ rental_information: 1, "description.interior.bedrooms": 1 })
+		.select({ rental_information: 1, "description.interior.bedRooms": 1 })
 		.then((data) => {
 			data.sort((a, b) => (a.referencing_note > b.referencing_note ? 1 : -1));
 			res.send({ propreties_on_top: [data[0], data[1], data[2]] });
@@ -35,7 +35,7 @@ exports.getThreeToper = (req, res) => {
 exports.updateProprety = (req, res) => {
 	Proprety.updateOne({ _id: req.params.id }, { ...req.body })
 		.then((data) => {
-			res.send(data)
+			res.send(data);
 		})
 		.catch((err) => res.send(err));
 };

@@ -15,7 +15,7 @@ const propretySchema = mongoose.Schema({
 		monetaryCurrency: String,
 		coverPicture: String,
 		address: { type: String, required: true, unique: true },
-		area: String,
+		bedRooms: String,
 		lessor: {
 			fullName: String,
 			contacts: String,
@@ -24,18 +24,19 @@ const propretySchema = mongoose.Schema({
 	description: {
 		gallery: [
 			{
-				_id: String,
 				url: String,
 				width: Number,
 				height: Number,
 				size: Number,
 				uploadDate: Date,
+				publicId: String,
 			},
 		],
 		tenantCharges: [
 			{
-				object: String,
+				charge: String,
 				price: Number,
+				currency: String,
 			},
 		],
 		interior: {
