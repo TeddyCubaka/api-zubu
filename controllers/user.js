@@ -12,11 +12,28 @@ exports.signup = (req, res) => {
 			user
 				.save()
 				.then((data) =>
-					res.status(201).json({ message: "Utilisateur créé !", data: data })
+					res.status(201).json({
+						message: "Utilisateur créé !",
+						data: {
+							user: data.data,
+							token: jwt.sign(
+								{ userId: data.data._id },
+								process.env.SECRET_KEY_FOR_JWT,
+								{
+									expiresIn: process.env.EXPIRE_DURATION_FOR_TOKEN,
+								}
+							),
+						},
+					})
 				)
 				.catch((error) => res.status(400).json({ error }));
 		})
-		.catch((error) => res.status(500).json({ error }));
+		.catch((error) =>
+			res.status(500).json({
+				message: "une erreur s'est produite, veuillez réessayer plus tard",
+				error,
+			})
+		);
 };
 
 module.exports.login = (req, res) => {
@@ -29,8 +46,9 @@ module.exports.login = (req, res) => {
 				.then((valid) => {
 					if (!valid)
 						return res.status(401).json({ message: "Incorrect password !" });
+					user.password = "";
 					res.status(200).json({
-						userId: user._id,
+						user: user,
 						token: jwt.sign(
 							{ userId: user._id },
 							process.env.SECRET_KEY_FOR_JWT,
