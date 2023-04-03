@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 require("dotenv").config();
+const path = require("path");
 
 const PropretyRoute = require("./api/routes/propreties");
 const UserRoute = require("./api/routes/users");
@@ -30,7 +31,6 @@ app.use("/api", (req, res, next) => {
 			"Welcome to zubu, Take contact with Teddy, my King, to more information",
 	});
 });
-
 
 app.listen("4000", () => {
 	console.log("listen on http://localhost:4000");
