@@ -1,4 +1,5 @@
 const Proprety = require("../models/propreties");
+const User = require("../models/user");
 
 exports.addProprety = (req, res) => {
 	const proprety = new Proprety({ ...req.body });
@@ -6,7 +7,15 @@ exports.addProprety = (req, res) => {
 	proprety.is_available = false;
 	proprety
 		.save()
-		.then((data) => res.status(201).json({ message: "Propreties added", data }))
+		.then((data) => {
+			User.updateOne(
+				{ _id: req.auth.userId },
+				{ $push: { proprety: data._id } }
+			)
+				.then((res) => console.log(res))
+				.catch((err) => console.log(err));
+			res.status(201).json({ message: "Propreties added", data });
+		})
 		.catch((err) => res.status(401).json({ message: "echec ", err }));
 };
 
