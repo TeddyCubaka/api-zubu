@@ -63,3 +63,10 @@ exports.getAllUser = (req, res) => {
 		.then((users) => res.status(200).json(users))
 		.catch((err) => res.status(400).json({ err }));
 };
+
+exports.getOneUser = (req, res) => {
+	User.findById({ _id: req.params.id })
+		.populate("proprety")
+		.then((user) => res.status(200).json(user))
+		.catch((err) => res.status(401).json({ err }));
+};

@@ -10,7 +10,7 @@ const UserSchema = mongoose.Schema({
 	gender: String,
 	profile_picture_url: String,
 	created_at: Date,
-	proprety: [String],
+	proprety: [{ type: mongoose.Schema.Types.ObjectId, ref: "Proprety" }],
 	pending_visit: [String],
 	sending_visit: [String],
 	proprety_saved: [String],
