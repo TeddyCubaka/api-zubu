@@ -14,16 +14,7 @@ exports.signup = (req, res) => {
 				.then((data) =>
 					res.status(201).json({
 						message: "Utilisateur créé !",
-						data: {
-							user: data.data,
-							token: jwt.sign(
-								{ userId: data.data._id },
-								process.env.SECRET_KEY_FOR_JWT,
-								{
-									expiresIn: process.env.EXPIRE_DURATION_FOR_TOKEN,
-								}
-							),
-						},
+						user: data,
 					})
 				)
 				.catch((error) => res.status(400).json({ error }));
