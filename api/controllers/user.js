@@ -40,13 +40,13 @@ module.exports.login = (req, res) => {
 					user.password = "";
 					res.status(200).json({
 						user: user,
-						// token: jwt.sign(
-						// 	{ userId: user._id },
-						// 	process.env.SECRET_KEY_FOR_JWT,
-						// 	{
-						// 		expiresIn: process.env.EXPIRE_DURATION_FOR_TOKEN,
-						// 	}
-						// ),
+						token: jwt.sign(
+							{ userId: user._id },
+							process.env.SECRET_KEY_FOR_JWT,
+							{
+								expiresIn: process.env.EXPIRE_DURATION_FOR_TOKEN,
+							}
+						),
 					});
 				})
 				.catch((err) =>
