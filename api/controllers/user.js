@@ -49,9 +49,13 @@ module.exports.login = (req, res) => {
 						),
 					});
 				})
-				.catch((err) => res.status(500).json({ err }));
+				.catch((err) =>
+					res.status(500).json({ err, message: "Can't compare password" })
+				);
 		})
-		.catch((err) => res.status(500).json({ err }));
+		.catch((err) =>
+			res.status(500).json({ err, message: "User is not found" })
+		);
 };
 
 exports.getAllUser = (req, res) => {
