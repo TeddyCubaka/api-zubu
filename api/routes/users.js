@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const user = require("../controllers/user");
+const auth = require("../middelwares/authorizations");
 
 router.use((req, res, next) => {
 	res.setHeader("Access-Control-Allow-Origin", "*");
@@ -18,5 +19,7 @@ router.post("/", user.signup);
 router.get("/", user.getAllUser);
 router.post("/auth", user.login);
 router.get("/:id", user.getOneUser);
+router.post("/save/:propretyId", auth, user.saveProprety);
+router.post("/unsave/:propretyId", auth, user.unsaveProprety);
 
 module.exports = router;

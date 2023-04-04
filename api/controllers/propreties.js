@@ -27,7 +27,7 @@ exports.getPropreties = (req, res) => {
 
 exports.getAllPropreties = (req, res) => {
 	Proprety.find()
-		.then((data) => res.send(data))
+		.then((data) => res.status(200).json(data))
 		.catch((err) => res.send(err));
 };
 
