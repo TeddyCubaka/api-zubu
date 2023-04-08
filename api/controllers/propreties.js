@@ -20,7 +20,7 @@ exports.addProprety = (req, res) => {
 };
 
 exports.getPropreties = (req, res) => {
-	Proprety.find({ _id: { $in: req.body.propreties } })
+	Proprety.find({ _id: { $in: req.params.propreties.split("plös") } })
 		.then((data) => res.status(200).json(data))
 		.catch((err) =>
 			res
