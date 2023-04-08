@@ -19,6 +19,7 @@ router.use((req, res, next) => {
 
 router.post("/", auth, propretiesCtrl.addProprety);
 router.post("/:id", auth, propretiesCtrl.updateProprety);
+router.get("/select", propretiesCtrl.getPropreties);
 router.get("/", propretiesCtrl.getAllPropreties);
 router.get("/three_On_top", propretiesCtrl.getThreeToper);
 router.get("/:id", propretiesCtrl.getOneProprety);
