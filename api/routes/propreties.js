@@ -20,6 +20,7 @@ router.use((req, res, next) => {
 router.post("/", auth, propretiesCtrl.addProprety);
 router.post("/:id", auth, propretiesCtrl.updateProprety);
 router.get("/select/:propreties", propretiesCtrl.getPropreties);
+router.get("/filter", propretiesCtrl.getManyPropreties);
 router.get("/", propretiesCtrl.getAllPropreties);
 router.get("/three_On_top", propretiesCtrl.getThreeToper);
 router.get("/:id", propretiesCtrl.getOneProprety);

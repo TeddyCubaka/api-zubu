@@ -5,6 +5,9 @@ exports.addProprety = (req, res) => {
 	const proprety = new Proprety({ ...req.body });
 	proprety.upload_date = Date();
 	proprety.is_available = false;
+	proprety.rentalInformation.price = Number(req.body.rentalInformation.price);
+	proprety.rentalInformation.address =
+		proprety.rentalInformation.address.toLowerCase();
 	proprety
 		.save()
 		.then((data) => {
@@ -31,6 +34,7 @@ exports.getPropreties = (req, res) => {
 
 exports.getAllPropreties = (req, res) => {
 	Proprety.find()
+		.limit(20)
 		.then((data) => res.status(200).json(data))
 		.catch((err) => res.send(err));
 };
@@ -63,6 +67,19 @@ exports.chakeAdress = (req, res) => {
 
 exports.getOneProprety = (req, res) => {
 	Proprety.findOne({ _id: req.params.id })
+		.then((data) => res.status(200).json(data))
+		.catch((err) => res.status(404).json(err));
+};
+
+exports.getManyPropreties = (req, res) => {
+	if (!req.body.address)
+		res.status(200).json({ message: "You miss some params" });
+	Proprety.find({
+		"rentalInformation.address": {
+			$regex: req.body.address,
+		},
+	})
+		.limit(20)
 		.then((data) => res.status(200).json(data))
 		.catch((err) => res.status(404).json(err));
 };
