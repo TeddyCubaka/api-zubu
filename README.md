@@ -6,19 +6,25 @@ Woubou is a new congoleese app for real estate ad.
 
 First, clone this repository. type this command in your terminal :
 
-    $ git clone https://github.com/TeddyCubaka/Zubu_backend.git
+```bash
+$ git clone https://github.com/TeddyCubaka/Zubu_backend.git
 
-    # or if you like use  shh keys
+# or
 
-    $ git clone git@github.com:TeddyCubaka/Zubu_backend.git
+$ git clone git@github.com:TeddyCubaka/Zubu_backend.git
+```
 
 Once done, go to project folder with typing :
 
-    $ cd  Zubu_backend
+```bash
+$ cd  api-zubu
+```
 
 Still in your terminal, type this command to install depandencies : 
 
-    $ yarn install
+```bash 
+$ yarn install
+```
 
 Once done, add a `.env` file by referring to the file `.env.example`.
 
@@ -26,7 +32,9 @@ Once done, add a `.env` file by referring to the file `.env.example`.
 
 After installation and config. Type :
 
-    $ yarn start
+```bash 
+$ yarn start
+```
 
 The server server will run on http://localhost:4000.
 
@@ -34,5 +42,5 @@ The server server will run on http://localhost:4000.
 
 This project use :
 
-    - Express
-    - Mongodb with Mongoose
+- Express
+- Mongodb with Mongoose
