@@ -74,7 +74,7 @@ exports.getOneProprety = (req, res) => {
 exports.getManyPropreties = (req, res) => {
 	Proprety.find({
 		"rentalInformation.address": {
-			$regex: req.params.address,
+			$regex: req.params.address.toLowerCase(),
 		},
 	})
 		.limit(20)
