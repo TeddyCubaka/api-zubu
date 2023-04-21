@@ -72,11 +72,9 @@ exports.getOneProprety = (req, res) => {
 };
 
 exports.getManyPropreties = (req, res) => {
-	if (!req.body.address)
-		res.status(200).json({ message: "You miss some params" });
 	Proprety.find({
 		"rentalInformation.address": {
-			$regex: req.body.address,
+			$regex: req.params.address,
 		},
 	})
 		.limit(20)
