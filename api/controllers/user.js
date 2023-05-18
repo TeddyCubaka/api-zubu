@@ -106,3 +106,10 @@ exports.unsaveProprety = (req, res) => {
 			})
 		);
 };
+
+exports.getUserSavePropreties = (req, res) => {
+	User.findById({ _id: req.params.id })
+		.populate("proprety")
+		.then((user) => res.status(200).json(user.proprety_saved))
+		.catch((err) => res.status(401).json({ err }));
+};

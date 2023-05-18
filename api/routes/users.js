@@ -19,6 +19,7 @@ router.post("/", user.signup);
 router.get("/", user.getAllUser);
 router.post("/auth", user.login);
 router.get("/:id", user.getOneUser);
+router.get("/saves/:id", user.getUserSavePropreties);
 router.post("/save/:propretyId", auth, user.saveProprety);
 router.post("/unsave/:propretyId", auth, user.unsaveProprety);
 
