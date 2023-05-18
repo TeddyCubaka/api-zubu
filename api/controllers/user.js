@@ -94,9 +94,10 @@ exports.unsaveProprety = (req, res) => {
 		{ _id: req.auth.userId },
 		{ $pull: { proprety_saved: req.params.propretyId } }
 	)
-		.then(() =>
-			res.status(201).json({
+		.then((data) =>
+			res.status(200).json({
 				message: "Propriété retirée avec succès !",
+				data: data,
 			})
 		)
 		.catch((err) =>
@@ -107,7 +108,7 @@ exports.unsaveProprety = (req, res) => {
 		);
 };
 
-exports.getUserSavePropreties = (req, res) => {
+exports.getUserSavesPropreties = (req, res) => {
 	User.findById({ _id: req.params.id })
 		.populate("proprety")
 		.then((user) => res.status(200).json(user.proprety_saved))
