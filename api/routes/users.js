@@ -19,7 +19,7 @@ router.post("/", user.signup);
 router.get("/", user.getAllUser);
 router.post("/auth", user.login);
 router.get("/:id", user.getOneUser);
-router.post("/save/:propretyId", auth, user.saveProprety);
-router.post("/unsave/:propretyId", auth, user.unsaveProprety);
+router.put("/save/:propretyId", auth, user.saveProprety);
+router.put("/unsave/:propretyId", auth, user.unsaveProprety);
 
 module.exports = router;

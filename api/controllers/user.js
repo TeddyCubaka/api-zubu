@@ -72,21 +72,19 @@ exports.getOneUser = (req, res) => {
 };
 
 exports.saveProprety = (req, res) => {
-	User.findOneAndUpdate(
+	User.updateOne(
 		{ _id: req.auth.userId },
 		{ $push: { proprety_saved: req.params.propretyId } }
 	)
-		.then((res) =>
-			res.json(201).json({
-				message: "Propriété sauvegardé avec succès !",
+		.then(() =>
+			res.status(200).json({
+				message: "Propriété sauvegardée avec succès !",
 			})
 		)
 		.catch((err) =>
 			res.status(401).json({
-				message: "Erreur de sauvegarder, veuillez réessayer plus tard",
-				err,
-				userId: req.auth.userId,
-				propretyId: req.params.propretyId,
+				message: "Erreur de sauvegarde, veuillez réessayer plus tard",
+				error: err,
 			})
 		);
 };
@@ -96,9 +94,9 @@ exports.unsaveProprety = (req, res) => {
 		{ _id: req.auth.userId },
 		{ $pull: { proprety_saved: req.params.propretyId } }
 	)
-		.then((res) =>
-			res.json(201).json({
-				message: "Propriété sauvegardé avec succès !",
+		.then(() =>
+			res.status(201).json({
+				message: "Propriété retirée avec succès !",
 			})
 		)
 		.catch((err) =>

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const propretySchema = mongoose.Schema({
-	owner: String,
+	owner: mongoose.Types.ObjectId,
 	uploadDate: Date,
 	updateDate: [Date],
 	questions: [mongoose.Types.ObjectId],
