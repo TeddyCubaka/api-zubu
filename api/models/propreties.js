@@ -16,10 +16,7 @@ const propretySchema = mongoose.Schema({
 		coverPicture: String,
 		address: { type: String, required: true, unique: true },
 		bedRooms: Number,
-		announcementPeriod: {
-			start: Date,
-			end: Date,
-		},
+		announcementPeriod: { type: Array, default: [null, null] },
 		lessor: {
 			fullName: String,
 			contacts: String,
