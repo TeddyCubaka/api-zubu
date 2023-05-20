@@ -18,7 +18,7 @@ const propretySchema = mongoose.Schema({
 		bedRooms: Number,
 		announcementPeriod: {
 			start: Date,
-			due: Date,
+			end: Date,
 		},
 		lessor: {
 			fullName: String,
